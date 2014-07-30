@@ -6,16 +6,15 @@ require './lib/list'
 
 def main_menu
   loop do
-    puts "Press 'a' to add a list\nPress 'l' to show your lists \n"
-    # Press 'r' to remove a task\n
+    puts "Press 'a' to add a list\nPress 'l' to show your lists \nPress 't' to add a task \nPress 'r'to remove a task"
     puts "Press 'x' to exit"
     main_menu = gets.chomp
     if main_menu == 'a'
       create_list
     elsif main_menu == 'l'
       show_lists
-    # elsif main_menu == 't'
-    #   list_tasks
+    elsif main_menu == 't'
+      create_task
     elsif main_menu == 'r'
       remove_task
     elsif main_menu == 'x'
@@ -39,14 +38,15 @@ end
     @list_array.each do |list|
       puts list.create_list
     end
-  #   puts 'Type the name of the list you want to add a task to.'
-  #   user_list_name = gets.chomp
-  #   @list_array.each do |list|
-  #     if user_list_name == list.create_list
-  #       puts list.create_list
-  # end
+  end
 
   def create_task
+    puts 'What list would you like to add your task to?'
+    user_input = gets.chomp
+    @list_array.each do |list|
+      if user_input == list.create_list
+      end
+    end
     puts 'Enter a description of the task.'
     user_description = gets.chomp
     @list << Task.new(user_description)
@@ -69,6 +69,5 @@ end
       @list.reject! {|task| user_delete == task.description}
     puts "Task removed"
   end
-
 
 main_menu
