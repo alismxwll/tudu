@@ -76,10 +76,16 @@ end
   end
 
   def remove_task
+    puts 'What list would you like to remove your task from?'
+    user_input = gets.chomp
+    @list_array.each do |list|
+      if user_input == list.create_list
+      end
+    end
+    puts 'Which task do you want to delete.'
     @list.each do |task|
       puts task.description
     end
-    puts 'Enter the task you want to delete.'
     user_delete = gets.chomp
       @list.reject! {|task| user_delete == task.description}
     puts "Task removed"
