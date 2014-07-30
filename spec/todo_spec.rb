@@ -1,5 +1,6 @@
 require 'rspec'
-require  'todo'
+require 'todo'
+require 'list'
 
 describe Task do
   it 'is initialized with a description' do
@@ -10,10 +11,22 @@ describe Task do
     test_task = Task.new'Go to Epicodus'
     test_task.description.should eq 'Go to Epicodus'
   end
-  it 'allows user to remove an item from the list' do
+  it 'allows user to remove a task from a list' do
     test_task = Task.new'Go to Epicodus'
-    test_task.description.should eq 'Go to Epicodus'
-    test_task.remove_task.should eq ''
+    test_task.remove_task.should eq nil
+  end
+end
+
+describe List do
+  it 'is initialized with an empty list of tasks' do
+    test_list = List.new('Home')
+    test_list.tasks.should eq []
+  end
+  it 'adds tasks to a list' do
+    test_list = List.new('Home')
+    test_task = Task.new('Clean')
+    test_list.add_task(test_task)
+    test_list.tasks.should eq [test_task]
   end
 end
 
