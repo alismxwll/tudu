@@ -5,13 +5,17 @@ require './lib/list'
 
 def main_menu
   loop do
-    puts "Press 'a' to add a list\nPress 't' to add a task \nPress 'r' to remove a task \nPress 'l' to show your lists \nPress 's' to show your tasks \n"
+    puts "Press 'a' to add a list\nPress 't' to add a task \nPress 'r' to remove a task \nPress 'l' to show your lists \nPress 's' to show your tasks \nPress 'p' to sort by priority \nPress 'd' to sort by due day"
     puts "Press 'x' to exit"
     main_menu = gets.chomp
     if main_menu == 'a'
       create_list
     elsif main_menu == 'l'
       show_lists
+    elsif main_menu == 'd'
+      weekday_sort
+    elsif main_menu == 'p'
+      priority_sort
     elsif main_menu == 's'
       show_tasks
     elsif main_menu == 't'
@@ -56,10 +60,23 @@ end
           puts 'What priority would you like to give this task (1-5)?'
           user_priority = gets.chomp
           new_task.get_priority(user_priority)
-          puts 'priority added.'
+          puts 'Priority added.'
         end
       end
     end
+
+  def priority_sort
+    puts 'What list would you like to sort by priority?'
+    user_input = gets.chomp
+    @list_array.each do |list|
+      list.sort_priority.each do |task|
+        puts "#{task.priority} #{task.description}"
+      end
+    end
+  end
+
+  def weekday_sort
+  end
 
   def show_tasks
     puts 'What list would you like to review?'
@@ -67,7 +84,7 @@ end
     @list_array.each do |list|
       if user_input == list.category
         puts 'Here are all of your tasks for that list: '
-         list.sort_priority.each do |task|
+            list.tasks.each do |task|
             puts "#{task.priority} #{task.description}"
          end
       end

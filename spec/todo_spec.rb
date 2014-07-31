@@ -34,6 +34,12 @@ describe List do
     test_task.get_priority("1")
     test_task.priority.should eq 1
   end
+  it 'adds a due date to the task' do
+    test_list = List.new('Home')
+    test_task = Task.new('Clean')
+    test_task.get_due_date('friday')
+    test_task.due_date.should eq 'friday'
+  end
   it 'sorts tasks based on their priority' do
     test_list = List.new('Home')
     test_task = Task.new('Clean')
