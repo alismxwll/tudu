@@ -34,5 +34,18 @@ describe List do
     test_task.get_priority("1")
     test_task.priority.should eq 1
   end
+  it 'sorts tasks based on their priority' do
+    test_list = List.new('Home')
+    test_task = Task.new('Clean')
+    test_task.get_priority(3)
+    test_task_two = Task.new('Sweep')
+    test_task_two.get_priority(2)
+    test_task_third = Task.new('Other')
+    test_task_third.get_priority(5)
+    test_list.get_task(test_task)
+    test_list.get_task(test_task_two)
+    test_list.get_task(test_task_third)
+    test_list.sort_priority.should eq [test_task_two, test_task, test_task_third]
+  end
 end
 

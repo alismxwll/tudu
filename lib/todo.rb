@@ -2,6 +2,7 @@ class Task
   def initialize(description)
     @description = description
     @remove_task = remove_task
+    priority = 0
   end
 
   def description

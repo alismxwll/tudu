@@ -47,7 +47,7 @@ end
     end
     puts 'What list would you like to add your task to?'
     user_input = gets.chomp
-    @list_array.each do |list|
+    @list_array.each do |list, task|
       if user_input == list.category
         puts 'Enter a description of the task.'
         user_description = gets.chomp
@@ -67,9 +67,9 @@ end
     @list_array.each do |list|
       if user_input == list.category
         puts 'Here are all of your tasks for that list: '
-        list.tasks.each do |task|
-          puts "#{task.description} #{task.priority}"
-        end
+         list.sort_priority.each do |task|
+            puts "#{task.priority} #{task.description}"
+         end
       end
     end
   end
