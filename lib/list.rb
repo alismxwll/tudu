@@ -2,6 +2,11 @@ class List
   def initialize(category)
     @category = category
     @tasks = []
+    @priority = []
+  end
+
+  def priority
+    @priority
   end
 
   def category

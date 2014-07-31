@@ -53,8 +53,6 @@ end
         user_description = gets.chomp
         new_task = Task.new(user_description)
         list.get_task(new_task)
-        # list.tasks.each do |task|
-          if new_task == new_task
           puts 'What priority would you like to give this task (1-5)?'
           user_priority = gets.chomp
           new_task.get_priority(user_priority)
@@ -62,7 +60,6 @@ end
         end
       end
     end
-  end
 
   def show_tasks
     puts 'What list would you like to review?'
