@@ -28,5 +28,11 @@ describe List do
     test_list.get_task(test_task)
     test_list.tasks.should eq [test_task]
   end
+  it 'adds a priority to a task' do
+    test_list = List.new('Home')
+    test_task = Task.new('Clean')
+    test_task.get_priority("1")
+    test_task.priority.should eq 1
+  end
 end
 
