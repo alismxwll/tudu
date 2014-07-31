@@ -2,7 +2,6 @@ require './lib/todo'
 require './lib/list'
 
 @list_array = []
-@list = []
 
 def main_menu
   loop do
@@ -16,7 +15,7 @@ def main_menu
     elsif main_menu == 's'
       show_tasks
     elsif main_menu == 't'
-      create_task
+      add_task
     elsif main_menu == 'r'
       remove_task
     elsif main_menu == 'x'
@@ -42,17 +41,17 @@ end
     end
   end
 
-  def create_task
+  def add_task
     puts 'What list would you like to add your task to?'
     user_input = gets.chomp
     @list_array.each do |list|
       if user_input == list.create_list
+        puts 'Enter a description of the task.'
+        user_description = gets.chomp
+        list.tasks << Task.new(user_description)
+        puts 'Task added.'
       end
     end
-    puts 'Enter a description of the task.'
-    user_description = gets.chomp
-    @list << Task.new(user_description)
-    puts 'Task added.'
   end
 
   def show_tasks
@@ -61,7 +60,7 @@ end
     @list_array.each do |list|
       if user_input == list.create_list
         puts 'Here are all of your tasks for that list: '
-        @list.each do |task|
+        list.tasks.each do |task|
           puts task.description
         end
       end
@@ -70,7 +69,7 @@ end
 
   def list_tasks
     puts 'Here are all of your tasks: '
-    @list.each do |task|
+    @tasks.each do |task|
       puts task.description
     end
   end
@@ -80,14 +79,14 @@ end
     user_input = gets.chomp
     @list_array.each do |list|
       if user_input == list.create_list
-      end
     end
+  end
     puts 'Which task do you want to delete.'
-    @list.each do |task|
+    @tasks.each do |task|
       puts task.description
     end
     user_delete = gets.chomp
-      @list.reject! {|task| user_delete == task.description}
+      @tasks.reject! {|task| user_delete == task.description}
     puts "Task removed"
   end
 

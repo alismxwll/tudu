@@ -8,11 +8,11 @@ class List
     @create_list
   end
 
-  def add_task(input)
-    @tasks << input
-  end
-
   def tasks
     @tasks
+  end
+
+  def get_tasks(task_object)
+    @tasks << task_object
   end
 end
