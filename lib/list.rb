@@ -1,18 +1,18 @@
 class List
-  def initialize(create_list)
-    @create_list = create_list
+  def initialize(category)
+    @category = category
     @tasks = []
   end
 
-  def create_list
-    @create_list
+  def category
+    @category
   end
 
   def tasks
     @tasks
   end
 
-  def get_tasks(task_object)
+  def get_task(task_object)
     @tasks << task_object
   end
 end

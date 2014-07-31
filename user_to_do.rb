@@ -37,18 +37,22 @@ end
   def show_lists
     puts 'Here are all of your lists: '
     @list_array.each do |list|
-      puts list.create_list
+      puts list.category
     end
   end
 
   def add_task
+    @list_array.each do |list|
+      puts list.category
+    end
     puts 'What list would you like to add your task to?'
     user_input = gets.chomp
     @list_array.each do |list|
-      if user_input == list.create_list
+      if user_input == list.category
         puts 'Enter a description of the task.'
         user_description = gets.chomp
-        list.tasks << Task.new(user_description)
+        new_task = Task.new(user_description)
+        list.get_task(new_task)
         puts 'Task added.'
       end
     end
@@ -58,7 +62,7 @@ end
     puts 'What list would you like to review?'
     user_input = gets.chomp
     @list_array.each do |list|
-      if user_input == list.create_list
+      if user_input == list.category
         puts 'Here are all of your tasks for that list: '
         list.tasks.each do |task|
           puts task.description
@@ -78,7 +82,7 @@ end
     puts 'What list would you like to remove your task from?'
     user_input = gets.chomp
     @list_array.each do |list|
-      if user_input == list.create_list
+      if user_input == list.category
     end
   end
     puts 'Which task do you want to delete.'

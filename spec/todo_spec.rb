@@ -25,7 +25,7 @@ describe List do
   it 'adds tasks to a list' do
     test_list = List.new('Home')
     test_task = Task.new('Clean')
-    test_list.add_task(test_task)
+    test_list.get_task(test_task)
     test_list.tasks.should eq [test_task]
   end
 end
